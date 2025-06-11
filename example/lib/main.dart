@@ -108,44 +108,6 @@ class _NotificationAPIExampleState extends State<NotificationAPIExample> {
     }
   }
 
-  Future<void> _requestPermission() async {
-    try {
-      setState(() {
-        _logs.insert(0, 'Requesting notification permission...');
-      });
-
-      final granted = await NotificationAPI.requestPermission();
-
-      setState(() {
-        _logs.insert(0, 'Permission ${granted ? 'granted' : 'denied'}');
-      });
-
-      _showMessage('Permission ${granted ? 'granted' : 'denied'}');
-    } catch (e) {
-      setState(() {
-        _logs.insert(0, 'Error requesting permission: $e');
-      });
-      _showMessage('Error: $e');
-    }
-  }
-
-  void _toggleForegroundNotifications() {
-    setState(() {
-      _showForegroundNotifications = !_showForegroundNotifications;
-      _logs.insert(
-        0,
-        'Foreground notifications ${_showForegroundNotifications ? 'enabled' : 'disabled'}',
-      );
-    });
-
-    NotificationAPI.setShowForegroundNotifications(
-      _showForegroundNotifications,
-    );
-    _showMessage(
-      'Foreground notifications ${_showForegroundNotifications ? 'enabled' : 'disabled'}',
-    );
-  }
-
   void _clearLogs() {
     setState(() {
       _logs.clear();
