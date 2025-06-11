@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.5] - 2024-03-21
+
+### Changed
+
+- 📦 **Package update** - Provided better utility methods for push token management
+
+## [2.0.4] - 2024-03-21
+
+### Fixed
+
+- 🔧 **Permission handling** - Fixed issue where notification permission is revoked but was previously granted
+
 ## [2.0.2] - 2024-12-20
 
 ### Fixed
