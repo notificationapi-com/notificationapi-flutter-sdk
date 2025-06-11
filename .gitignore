@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -43,6 +45,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/.gradle/
 
 # iOS/macOS
 **/ios/**/*.mode1v3
@@ -137,4 +140,9 @@ Thumbs.db
 *.tar.gz
 *.zip
 *.rar
-*.7z 
+*.7z
+
+# Example app specific
+example/.metadata
+example/pubspec.lock
+example/.dart_tool/ 

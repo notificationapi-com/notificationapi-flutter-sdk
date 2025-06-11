@@ -1,6 +1,6 @@
 name: notificationapi_flutter_sdk
 description: A Flutter plugin for integrating NotificationAPI push notifications into your mobile app.
-version: 2.0.2
+version: 2.0.5
 homepage: https://github.com/notificationapi-com/notificationapi-flutter-sdk
 
 environment:

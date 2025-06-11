@@ -69,25 +69,13 @@ class NotificationAPI {
       // Initialize push notifications
       await _instance._initializePushNotifications();
 
-      // Check if we already have a token (user has permission)
-      final existingToken = await _instance._push.token;
-
-      if (existingToken != null && existingToken.isNotEmpty) {
-        // Scenario 3: User already has permission, sync existing token
-        await _instance._identifyWithToken(existingToken);
-      } else if (autoRequestPermission) {
-        // Scenario 1: Request permission and sync token if granted
-        final permissionGranted = await requestPermission();
-        if (permissionGranted) {
-          // Give a small delay for token generation, then sync
-          await Future.delayed(const Duration(milliseconds: 500));
-          final newToken = await _instance._push.token;
-          if (newToken != null && newToken.isNotEmpty) {
-            await _instance._identifyWithToken(newToken);
-          }
-        }
-        // Scenario 2: Permission rejected - nothing happens (handled automatically)
+      // Request permission if autoRequestPermission is true
+      if (autoRequestPermission) {
+        await requestPermission(syncToken: false);
       }
+
+      // Generate and sync token
+      await _instance._generateAndSyncToken();
 
       // Setup automatic foreground notification display
       if (_showForegroundNotifications) {
@@ -278,23 +266,16 @@ class NotificationAPI {
 
   /// Request permission for push notifications
   ///
+  /// [syncToken] - Whether to sync the token after permission is granted (default: true)
   /// Returns true if permission was granted, false otherwise
-  static Future<bool> requestPermission() async {
+  static Future<bool> requestPermission({bool syncToken = true}) async {
     try {
-      // Request local notification permission if enabled
-      if (_showForegroundNotifications && _localNotifications != null) {
-        await _localNotifications!
-            .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
-            ?.requestNotificationsPermission();
-
-        await _localNotifications!
-            .resolvePlatformSpecificImplementation<
-                IOSFlutterLocalNotificationsPlugin>()
-            ?.requestPermissions(alert: true, badge: true, sound: true);
+      final granted = await _instance._push.requestPermission();
+      if (granted && syncToken) {
+        await _instance._generateAndSyncToken();
       }
 
-      return await _instance._push.requestPermission();
+      return granted;
     } catch (e) {
       // Return false instead of throwing to make it more user-friendly
       return false;
@@ -345,6 +326,14 @@ class NotificationAPI {
   void dispose() {
     _messageController.close();
     _messageOpenedController.close();
+  }
+
+  /// Generate and sync push token with NotificationAPI
+  Future<void> _generateAndSyncToken() async {
+    final token = await _push.token;
+    if (token != null && token.isNotEmpty) {
+      await _identifyWithToken(token);
+    }
   }
 }
 
