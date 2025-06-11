@@ -30,5 +30,4 @@ jobs:
         run: |
           cd example
           flutter pub get
-          flutter build ios --no-codesign
           flutter build apk --debug
