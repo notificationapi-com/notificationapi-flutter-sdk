@@ -1,4 +1,4 @@
-name: Pull Request Checks
+name: Pull Request Pipeline
 
 on:
   pull_request:
