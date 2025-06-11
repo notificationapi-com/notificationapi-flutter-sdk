@@ -1,11 +1,10 @@
-name: Pull Request Pipeline
-
 on:
   pull_request:
     branches: [main, master]
 
+name: Pull Request Pipeline
 jobs:
-  test:
+  pull_request_pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
