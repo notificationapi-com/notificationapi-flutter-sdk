@@ -90,6 +90,7 @@ class _NotificationAPIExampleState extends State<NotificationAPIExample> {
         userId: _userId,
         autoRequestPermission: _autoRequestPermission,
         showForegroundNotifications: _showForegroundNotifications,
+        // region: 'eu'
       );
 
       setState(() {

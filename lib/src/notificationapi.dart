@@ -41,10 +41,12 @@ class NotificationAPI {
   /// [hashedUserId] - Hashed user ID for privacy (optional)
   /// [autoRequestPermission] - Automatically request push notification permission (default: true)
   /// [showForegroundNotifications] - Show native notifications when app is in foreground (default: true)
+  /// [region] - Region code: 'us' (default), 'eu', or 'ca'
   static Future<void> setup({
     required String clientId,
     required String userId,
     String? hashedUserId,
+    String region = 'us',
     bool autoRequestPermission = true,
     bool showForegroundNotifications = true,
   }) async {
@@ -64,6 +66,7 @@ class NotificationAPI {
         clientId: clientId,
         userId: userId,
         hashedUserId: hashedUserId,
+        region: region,
       );
 
       // Initialize push notifications

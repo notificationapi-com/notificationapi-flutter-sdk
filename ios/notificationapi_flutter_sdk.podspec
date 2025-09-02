@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'notificationapi_flutter_sdk'
-  s.version          = '1.0.0'
+  s.version          = '2.1.0'
   s.summary          = 'A Flutter plugin for integrating NotificationAPI push notifications.'
   s.description      = <<-DESC
 A Flutter plugin for integrating NotificationAPI push notifications into your mobile app.

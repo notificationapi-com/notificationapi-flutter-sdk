@@ -8,16 +8,32 @@ class NotificationAPIService {
   final String clientId;
   final String userId;
   final String? hashedUserId;
-  final String apiRegion;
+  final String region;
+  final String? baseUrl;
 
-  NotificationAPIService({
-    required this.clientId,
-    required this.userId,
-    this.hashedUserId,
-    this.apiRegion = APIRegion.us,
-  });
+  NotificationAPIService(
+      {required this.clientId,
+      required this.userId,
+      this.hashedUserId,
+      this.region = 'us',
+      this.baseUrl});
 
-  String get _baseUrl => 'https://$apiRegion';
+  String get _baseUrl {
+    if (baseUrl != null && baseUrl!.isNotEmpty) {
+      return baseUrl!;
+    }
+    final normalized = region.toLowerCase();
+    switch (normalized) {
+      case 'eu':
+        return APIEndpoints.eu;
+      case 'ca':
+        return APIEndpoints.ca;
+      case 'us':
+        return APIEndpoints.us;
+      default:
+        return APIEndpoints.us;
+    }
+  }
 
   /// Generate basic auth token for user
   String _generateBasicToken() {

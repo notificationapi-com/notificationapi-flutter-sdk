@@ -1,0 +1,41 @@
+PODS:
+  - device_info_plus (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_local_notifications (0.0.1):
+    - Flutter
+  - notificationapi_flutter_sdk (1.0.0):
+    - Flutter
+  - push (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - notificationapi_flutter_sdk (from `.symlinks/plugins/notificationapi_flutter_sdk/ios`)
+  - push (from `.symlinks/plugins/push/darwin`)
+
+EXTERNAL SOURCES:
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  Flutter:
+    :path: Flutter
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  notificationapi_flutter_sdk:
+    :path: ".symlinks/plugins/notificationapi_flutter_sdk/ios"
+  push:
+    :path: ".symlinks/plugins/push/darwin"
+
+SPEC CHECKSUMS:
+  device_info_plus: 71ffc6ab7634ade6267c7a93088ed7e4f74e5896
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_local_notifications: ad39620c743ea4c15127860f4b5641649a988100
+  notificationapi_flutter_sdk: 303de0f9911e042f62e24fce17dc430ef792cdc2
+  push: 91373ae39c5341c6de6adefa3fda7f7287d646bf
+
+PODFILE CHECKSUM: 4305caec6b40dde0ae97be1573c53de1882a07e5
+
+COCOAPODS: 1.16.2
