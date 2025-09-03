@@ -19,7 +19,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  notificationapi_flutter_sdk: ^1.0.3
+  notificationapi_flutter_sdk: ^2.1.0
 ```
 
 ### 2. Setup (One Line!)
@@ -33,6 +33,7 @@ await NotificationAPI.setup(
   userId: 'user123',
   autoRequestPermission: true, // automatically request push permissions
   showForegroundNotifications: true, // show native notifications when app is open
+  region: 'eu', // 'us' (default), 'eu', or 'ca'
 );
 ```
 
@@ -253,11 +254,12 @@ NotificationAPI.setShowForegroundNotifications(true);  // Re-enable
 
 ```dart
 await NotificationAPI.setup({
-  required String clientId,           // Your NotificationAPI client ID
-  required String userId,             // User's unique identifier
-  String? hashedUserId,              // Hashed user ID for privacy (optional)
-  bool autoRequestPermission = true, // Auto-request push permission (optional)
-  bool showForegroundNotifications = true, // Auto-show native notifications (optional)
+  required String clientId,                  // Your NotificationAPI client ID
+  required String userId,                    // User's unique identifier
+  String? hashedUserId,                     // Hashed user ID for privacy (optional)
+  String region = 'us',                     // 'us' (default), 'eu', or 'ca'
+  bool autoRequestPermission = true,        // Auto-request push permission (optional)
+  bool showForegroundNotifications = true,  // Auto-show native notifications (optional)
 });
 ```
 

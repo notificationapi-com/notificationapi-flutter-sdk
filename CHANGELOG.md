@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2025-09-02
+
+### Added
+
+- 🌍 Region support for EU and CA via `region` parameter
+  - API endpoints automatically route to `eu` and `ca` regions
+  - Default remains `us`
+
 ## [2.0.5] - 2024-03-21
 
 ### Changed
